@@ -37,4 +37,4 @@ async def on_message(message):
 	else:
 		return
 
-client.run('BOT-TOKEN')
+client.run('CLIENT-TOKEN')
