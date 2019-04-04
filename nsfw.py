@@ -23,7 +23,7 @@ async def on_message(message):
 		return
 	if message.content.startswith('http'):
 		img = str(message.content)
-		key = 'fe6eb650c73156933bf503c5a8dad37e'
+		key = 'API-KEY'
 		req = requests.get('https://api.pixlab.io/nsfw', params={'img': img, 'key': key})
 		reply = req.json()
 		if reply['status'] != 200:
@@ -37,4 +37,4 @@ async def on_message(message):
 	else:
 		return
 
-client.run('NTYzMjk3MjA5NzE4ODAwMzg0.XKXRcg.izX6mOqqt6njmzsIGAdpWf285eQ')
+client.run('BOT-TOKEN')
