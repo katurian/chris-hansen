@@ -1,7 +1,6 @@
 import discord
 import asyncio
 from discord.ext.commands import Bot
-from discord.ext import commands
 import platform
 import requests
 import json
@@ -17,18 +16,19 @@ async def on_ready():
 	print('Made by Kate Kulinski')
 	return await client.change_presence(game=discord.Game(name='Pixlab'))
 
+
 @client.event
 async def on_message(message):
 	if (message.author.bot == True):
 		return
-	if message.content.startswith('http'):
+	if message.content.startswith('http') and str(message.channel) != "nsfw":
 		img = str(message.content)
-		key = 'API-KEY'
+		key = 'fe6eb650c73156933bf503c5a8dad37e'
 		req = requests.get('https://api.pixlab.io/nsfw', params={'img': img, 'key': key})
 		reply = req.json()
 		if reply['status'] != 200:
 			return
-		elif reply['score'] < 0.5:
+		elif reply['score'] < 0.4:
 			return
 		else:
 			await client.delete_message(message)
